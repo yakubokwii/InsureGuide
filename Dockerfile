@@ -12,12 +12,13 @@ WORKDIR /app
 RUN git lfs install
 
 # Clone the repository and pull LFS files
-ARG REPO_URL= https://github.com/yakubokwii/InsureGuide.git
+ARG REPO_URL=https://github.com/yakubokwii/InsureGuide.git
 ARG REPO_BRANCH=main
 
-RUN git clone --branch $REPO_BRANCH $REPO_URL . && \
+# Use the build arguments
+RUN git clone --branch ${REPO_BRANCH} ${REPO_URL} . && \
     git lfs pull
-
+    
 # Install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
