@@ -19,7 +19,7 @@ model.to(device)
 def generate_text():
     data = request.json
     prompt = data.get("prompt", "")
-    max_length = data.get("max_length", 100)
+    max_length = data.get("max_length",  100)
 
     if not prompt:
         return jsonify({"error": "Prompt is required."}), 400
